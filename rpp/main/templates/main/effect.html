@@ -1,0 +1,38 @@
+{% extends "main/header.html" %}
+
+{% block title %}
+<title>The Effect</title>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col s8 push-s2 container center">
+        <div class="col l12 m12 s12 center">
+            <div class="section-header center">
+              <h2 class="section-title center">The Raid Effect</h2>
+              <hr class="lines">
+              <p class="center">Check out some of our favorite clips of people we have raided</p>
+            </div>
+        </div>
+        <div class="col l12 m12 s12 center" style="height: 600px;">
+            {% for effect in effects %}
+            {% if forloop.counter|divisibleby:2 %}
+            <div class="z-depth-2 col l4 m6 s12">
+                <div style="height: 500px; background: #0e3b43;">
+                    <h1 style="height: 200px;">{{ effect.name }}</h1>
+                    <iframe src="https://clips.twitch.tv/embed?clip={{ effect.clip_id }}" frameborder="10" allowfullscreen="true" height="200" width="100%"></iframe>
+                </div>
+            </div>
+            {% else %}
+            <div class="z-depth-2 col l4 m6 s12">
+                <div style="height: 500px; background: #7ebdc3;">
+                    <h1 style="height: 200px;">{{ effect.name }}</h1>
+                    <iframe src="https://clips.twitch.tv/embed?clip={{ effect.clip_id }}" frameborder="10" allowfullscreen="true" height="200" width="100%"></iframe>
+                </div>
+            </div>
+            {% endif%}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

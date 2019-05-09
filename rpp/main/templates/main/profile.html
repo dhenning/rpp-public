@@ -1,0 +1,63 @@
+{% extends "main/header.html" %}
+{% load static %}
+{% block content %}
+<br>
+<div class="row container" style="background: #b72026;">
+    <br>
+    <form method="post" class="container white-text" enctype="multipart/form-data">
+        {% csrf_token %}
+        <img class="s2 pull-s10 responsive-img circle" src="/media/{{user.raider.profile_pic}}" style="height:150px;" alt="profile image">
+        <h2 class="center s10 push-s2">{{ user }}</h2>
+        <div class="fieldWrapper">
+            {{ userform.username.errors }}
+            <label for="{{ userform.username.id_for_label }}">username:</label>
+            {{ userform.username }}
+        </div>
+        <div class="fieldWrapper">
+            {{ userform.email.errors }}
+            <label for="{{ userform.email.id_for_label }}">Email address:</label>
+            {{ userform.email }}
+        </div>
+        <div class="fieldWrapper" >
+            {{ userform.first_name.errors }}
+            <label for="{{ userform.first_name.id_for_label }}">First Name:</label>
+            {{ userform.first_name }}
+        </div>
+        <div class="fieldWrapper">
+            {{ userform.last_name.errors }}
+            <label for="{{ userform.last_name.id_for_label }}">Last Name:</label>
+            {{ userform.last_name }}
+        </div>
+        {{ raiderform.non_field_errors }}
+        <div class="fieldWrapper">
+            <label for="{{ raiderform.discord_user.id_for_label }}">discord:</label>
+            <a class="btn" href="/discord_link">Link Discord</a>
+        </div>
+        <div class="fieldWrapper">
+            {{ raiderform.birthday.errors }}
+            <label for="{{ raiderform.birthday.id_for_label }}">birthday: yyyy-mm-dd</label>
+            {{ raiderform.birthday }}
+        </div>
+        <div class="fieldWrapper">
+            {{ raiderform.profile_pic.errors }}
+            {{ raiderform.profile_pic }}
+        </div>
+        <div class="fieldWrapper">
+            {{ raiderform.bio.errors }}
+            <label for="{{ raiderform.bio.id_for_label }}">bio:</label>
+            {{ raiderform.bio }}
+        </div>
+        <div class="fieldWrapper">
+            {{ raiderform.youtube_channel.errors }}
+            <label for="{{ raiderform.youtube_channel.id_for_label }}">youtube:</label>
+            {{ raiderform.youtube_channel }}
+        </div>
+        <div class="fieldWrapper">
+            {{ raiderform.twitter_name.errors }}
+            <label for="{{ raiderform.twitter_name.id_for_label }}">twitter:</label>
+            {{ raiderform.twitter_name }}
+        </div>
+        <button type="submit">Save changes</button>
+    </form>
+</div>
+{% endblock %}

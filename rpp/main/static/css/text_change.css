@@ -1,0 +1,15 @@
+button#us span#a {
+  display: inline;
+}
+
+button#us:hover span#a {
+  display: none;
+}
+
+button#us span#b {
+  display: none;
+}
+
+button#us:hover span#b {
+  display: inline;
+}

@@ -1,0 +1,101 @@
+{% extends "main/header.html" %}
+
+{% block title %}
+<title>Homepage</title>
+{% endblock %}
+{% load static %}
+{% block content %}
+<div class="container row">
+    <div class="section-header col l12 m12 s12 white-text" style="background: #0c1217;">
+          <h2 class="section-title center">Our Team</h2>
+          <hr class="lines">
+        <p class="section-subtitle center">The Jarls, Gothi,<br>and people that work so very hard to keep everything running smoothly.</p>
+    </div>
+    {% for admin in admins %}
+    {% if forloop.counter|divisibleby:2 %}
+    <div class="col l4 m4 s12 center">
+        <div class="card hoverable z-depth-1 center" style="max-width:300px; min-height:375px; background: #0e3b43;">
+            <br>
+            <img class="responsive-img" src="/media/{{admin.raider.profile_pic}}" style="height:200px;" alt="profile image">
+            <div>{{ admin.first_name }}</div>
+            {% if admin.last_name|lower == 'hessling' %}
+            <div> founder </div>
+            {% endif %}
+            <div>{{ admin.raider.discord_user }}</div>
+            <div>{{ admin.raider.bio }}</div>
+            {% if admin.raider.twitch_name %}
+            <a href="https://www.twitch.tv/{{admin.raider.twitch_name}}"><img src="{% static 'site-logo/twitch_logo.png' %}" style="height:75px;"></a>
+            {% else %}
+            <img src="{% static 'site-logo/twitch_logo.png' %}" style="height:75px;">
+            {%endif %}
+            {% if admin.raider.twitter_name %}
+            <a href="https://twitter.com/{{admin.raider.twitter_name}}"><img src="{% static 'site-logo/twitter-icon.png' %}" style="height:75px;"></a>
+            {% else %}
+            <img src="{% static 'site-logo/twitter-icon.png' %}" style="height:75px;">
+            {%endif %}
+            {% if admin.raider.youtube_channel %}
+            <a href="https://www.youtube.com/channel/{{admin.raider.youtube_channel}}"><img src="{% static 'site-logo/youtube-logo.png' %}" style="height:75px;"></a>
+            {% else %}
+            <img src="{% static 'site-logo/youtube-logo.png' %}" style="height:75px;">
+            {%endif %}
+        </div>
+    </div>
+    {% else %}
+    <div class="col l4 m4 s12 center">
+        <div class="card hoverable z-depth-1 center" style="max-width:300px; min-height:375px; background: #7ebdc3;">
+            <br>
+            <img class="responsive-img" src="/media/{{admin.raider.profile_pic}}" style="height:200px;" alt="profile image">
+            <div>{{ admin.first_name }}</div>
+            {% if admin.last_name|lower == 'hessling' %}
+            <div> founder </div>
+            {% endif %}
+            <div>{{ admin.raider.discord_user }}</div>
+            <div>{{ admin.raider.bio }}</div>
+            {% if admin.raider.twitch_name %}
+            <a href="https://www.twitch.tv/{{admin.raider.twitch_name}}"><img src="{% static 'site-logo/twitch_logo.png' %}" style="height:75px;"></a>
+            {% else %}
+            <img src="{% static 'site-logo/twitch_logo.png' %}" style="height:75px;">
+            {%endif %}
+            {% if admin.raider.twitter_name %}
+            <a href="https://twitter.com/{{admin.raider.twitter_name}}"><img src="{% static 'site-logo/twitter-icon.png' %}" style="height:75px;"></a>
+            {% else %}
+            <img src="{% static 'site-logo/twitter-icon.png' %}" style="height:75px;">
+            {%endif %}
+            {% if admin.raider.youtube_channel %}
+            <a href="https://www.youtube.com/channel/{{admin.raider.youtube_channel}}"><img src="{% static 'site-logo/youtube-logo.png' %}" style="height:75px;"></a>
+            {% else %}
+            <img src="{% static 'site-logo/youtube-logo.png' %}" style="height:75px;">
+            {%endif %}
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    <div class="divider col l12 m12 s12 center"><br></div>
+        <div class="container row">
+            {% for gothi in gothis %}
+            {% if forloop.counter|divisibleby:2 %}
+            <div class="col l3 m3 s6">
+                <div class="card hoverable z-depth-1 center" style="max-width:215px; background: #7ebdc3;">
+                    <br>
+                    <img class="responsive-img" src="/media/{{gothi.raider.profile_pic}}" style="height:150px;" alt="profile image">
+                    <div>{{ gothi.first_name }}</div>
+                    <div class="container" style="font-size: 10px;">{{ gothi.raider.discord_user }}</div>
+                    <div class="container" style="font-size: 10px;">{{ gothi.raider.bio }}</div>
+                </div>
+            </div>
+            {% else %}
+            <div class="col l3 m3 s6">
+                <div class="card hoverable z-depth-1 center " style="max-width:215px; background: #0e3b43;">
+                    <br>
+                    <img class="responsive-img" src="/media/{{gothi.raider.profile_pic}}" style="height:150px;" alt="profile image">
+                    <div>{{ gothi.first_name }}</div>
+                    <div class="container" style="font-size: 10px;">{{ gothi.raider.discord_user }}</div>
+                    <div class="container" style="font-size: 10px;">{{ gothi.raider.bio }}</div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

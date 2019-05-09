@@ -1,0 +1,128 @@
+{% load static %}
+{% load groups %}
+{% if user.is_authenticated %}
+    <ul id="dropdown1" class="dropdown-content" style="color: #7ebdc3;">
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/rpp">old site</a></li>
+        <li class="divider"></li>
+        <li><a href="https://discord.gg/28tJaDw">Discord</a></li>
+        <li class="divider"></li>
+        {% if user|has_group:"admin" %}
+        <li><a href="/one">css 1</a></li>
+        <li><a href="/two">css 2</a></li>
+        <li class="divider"></li>
+        <li><a href="/admin">Admin</a></li>
+        <li><a href="https://calendar.google.com/calendar/embed?src=rpp-accounts%40raidingpartyplus.com&ctz=America%2FNew_York">Calendar Access</a></li>
+        {% elif user|has_group:"gothi" %}
+        <li class="divider"></li>
+        <li><a href="/admin">Gothi</a></li>
+        <li><a href="https://calendar.google.com/calendar/embed?src=rpp-accounts%40raidingpartyplus.com&ctz=America%2FNew_York">Calendar Access</a></li>
+        <li><a href="/one">css 1</a></li>
+        <li><a href="/two">css 2</a></li>
+        {% endif %}
+        <li class="divider"></li>
+         <li><a href="/logout">Logout</a></li>
+    </ul>
+    {% endif %}
+    <span>
+        {% if request.user_agent.is_mobile %}
+        <img src="{% static 'images/banner.png' %}" height="159px;" width="100%" style="float:left; z-index: 0; position: absolute;">
+        {% elif request.user_agent.is_tablet %}
+        <img src="{% static 'images/banner.png' %}" height="212px;" width="100%" style="float:left; z-index: 0; position: absolute;">
+        {% else %}
+        <img class="banner hide-on-large-only" src="{% static 'images/banner.png' %}" height="159px;" width="100%" style="float:left; z-index: 0; position: absolute;">
+        <img class="banner hide-on-med-and-down" src="{% static 'images/banner.png' %}" height="318px;" width="100%" style="float:left; z-index: 0; position: absolute;">
+        {% endif %}
+    </span>
+    {% if request.user_agent.is_mobile %}
+    <div style="height: 159px;"></div>
+    {% elif request.user_agent.is_tablet %}
+    <div style="height: 212px;"></div>
+    {% else %}
+    <div style="height: 159px;" class="banner hide-on-large-only"></div>
+    <div style="height: 315px;" class="banner hide-on-med-and-down"></div>
+    {% endif %}
+    <nav>
+        <style>
+            @media screen and (max-width: 768px) {
+
+                      .banner {
+                        height: 159px;
+                        }
+             }
+        </style>
+        <div class="nav-wrapper" style="background: #0e3b43;">
+            <a href="/"><img class="responsive-img brand-logo" src="{% static 'images/PARTYPLUS.png' %}" style="height:60px;"></a>
+            <a data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+                <li><a href="/streams"><i class="material-icons">play_arrow</i></a></li>
+                <li><a href="/rpp">old site</a></li>
+                <li><a href="/effect">Effect</a></li>
+                <li><a href="/store">Merch</a></li>
+                <li><a href="/team">The Team</a></li>
+                <li><a href="/calendar">Calendar</a></li>
+                <li><a href="/leaderboard">Leaderboard</a></li>
+                {% if user.is_authenticated %}
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">{{ user }}<i class="material-icons right">arrow_drop_down</i></a></li>
+                {% else %}
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var elems = document.querySelectorAll('.dropdown-trigger');
+                var instances = M.Dropdown.init(elems, options);
+              });
+
+              // Or with jQuery
+
+              $('.dropdown-trigger').dropdown();
+        </script>
+    </nav>
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems, options);
+      });
+
+      // Or with jQuery
+
+      $(document).ready(function(){
+        $('.sidenav').sidenav();
+      });
+  </script>
+  <ul class="sidenav" id="mobile" style="display: #7ebdc3">
+        {% if user.is_authenticated %}
+        <li><a href="/logout">Logout</a></li>
+        <li class="divider"></li>
+        {% else %}
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+        {% endif %}
+        <li><a href="/rpp">old site</a></li>
+        <li><a href="/streams"><i class="material-icons">play_arrow</i></a></li>
+        <li><a href="/effect">Effect</a></li>
+        <li><a href="/store">Merch</a></li>
+        <li><a href="/team">The Team</a></li>
+        <li><a href="/leaderboard">Leaderboard</a></li>
+        {% if user.is_authenticated %}
+        <li class="divider"></li>
+        <li><a href="/profile">Profile</a></li>
+        <li class="divider"></li>
+        <li><a href="https://discord.gg/28tJaDw">Discord</a></li>
+        <li class="divider"></li>
+        {% if user|has_group:"admin" %}
+        <li><a href="/one">css 1</a></li>
+        <li><a href="/two">css 2</a></li>
+        <li><a href="/two">css 2</a></li>
+        <li class="divider"></li>
+        <li><a href="/admin">Admin</a></li>
+        {% elif user|has_group:"gothi" %}
+        <li class="divider"></li>
+        <li><a href="/admin">Gothi</a></li>
+        {% endif %}
+    {% endif %}
+  </ul>

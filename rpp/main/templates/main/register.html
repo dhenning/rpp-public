@@ -1,0 +1,16 @@
+{% extends "main/header.html" %}
+
+{% block title %}
+<title>Register</title>
+{% endblock %}
+
+{% block content %}
+    <form method="POST" class="container white">
+        {% csrf_token %
+        {{ userform.as_p }}
+        <button class="btn" type="submit">register</button>
+    </form>
+ <div class="container white">If you already have an account <a href="/login"><strong>login</strong></a> instead.</div>
+
+
+{% endblock %}

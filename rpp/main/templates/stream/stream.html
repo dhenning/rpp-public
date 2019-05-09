@@ -1,0 +1,215 @@
+{% extends "main/header.html" %}
+
+{% block title %}
+<title>Live</title>
+{% endblock %}
+
+
+
+{% block content %}
+<nav class="nav-extended row">
+    <ul class="tabs center">
+        {% if pages.number == 1 %}
+        <li class="tab col s1 active"><a>Honorary</a></li>
+        {% else %}
+        <li class="tab col s1"><a href="?page=1">Honorary</a></li>
+        {% endif %}
+        {% if pages.number == 2 %}
+        <li class="tab col s1 active"><a>Jarls</a></li>
+        {% else %}
+        <li class="tab col s1"><a href="?page=2">Jarls</a></li>
+        {% endif %}
+        {% if pages.number == 3 %}
+        <li class="tab col s1 active"><a>Gothi</a></li>
+        {% else %}
+        <li class="tab col s1"><a href="?page=3">Gothi</a></li>
+        {% endif %}
+        {% if pages.number == 4 %}
+        <li class="tab col s1 active"><a>The Fimm-Ti</a></li>
+        {% else %}
+        <li class="tab col s1"><a href="?page=4">The Fimm-Ti</a></li>
+        {% endif %}
+        {% if pages.number == 5 %}
+        <li class="tab col s1 active"><a>Berserker</a></li>
+        {% else %}
+        <li class="tab col s1"><a href="?page=5">Berserker</a></li>
+        {% endif %}
+        {% if pages.number == 6 %}
+        <li class="tab col s1 active"><a>Huskarl</a></li>
+        {% else %}
+        <li class="tab col s1"><a href="?page=6">Huskarl</a></li>
+        {% endif %}
+        {% if pages.number == 7 %}
+        <li class="tab col s1 active"><a>Theg</a></li>
+        {% else %}
+        <li class="tab col s1"><a href="?page=7">Theg</a></li>
+        {% endif %}
+        {% if pages.number == 8 %}
+        <li class="tab col s1 active"><a>Gesith</a></li>
+        {% else %}
+        <li class="tab col s1"><a href="?page=8">Gesith</a></li>
+        {% endif %}
+        {% if pages.number == 9 %}
+        <li class="tab col s1 active"><a>Bondi</a></li>
+        {% else %}
+        <li class="tab col s1"><a href="?page=9">Bondi</a></li>
+        {% endif %}
+        {% if pages.number == 10 %}
+        <li class="tab col s1 active"><a>Dreng</a></li>
+        {% else %}
+        <li class="tab col s1"><a href="?page=10">Dreng</a></li>
+        {% endif %}
+        {% if pages.number == 11 %}
+        <li class="tab col s1 active"><a>Karl</a></li>
+        {% else %}
+        <li class="tab col s1"><a href="?page=11">Karl</a></li>
+        {% endif %}
+        {% if pages.number == 12 %}
+        <li class="tab col s1 active"><a>Folc</a></li>
+        {% else %}
+        <li class="tab col s1"><a href="?page=12">Folc</a></li>
+        {% endif %}
+
+    </ul>
+    {% if pages.number > 3 %}
+    <div class="pagination center">
+        <span class="step-links">
+            {% if nines.has_previous %}
+                <a href="?page={{pages.number}}&nines=1">&laquo; first</a>
+                <a href="?page={{pages.number}}&nines={{ nines.previous_page_number }}">previous</a>
+            {% endif %}
+            <span class="current">
+                Page {{ nines.number }} of {{ nines.paginator.num_pages }}
+            </span>
+            {% if nines.has_next %}
+                <a href="?page={{pages.number}}&nines={{ nines.next_page_number }}">next</a>
+                <a href="?page={{pages.number}}&nines={{ nines.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+{% endif %}
+</nav>
+
+
+
+
+{% if pages.number == 1 %}
+<div class="row center">
+    <h1>Honorary Streamers</h1>
+    {% for user in groups %}
+    <div>
+    <iframe src = "https://player.twitch.tv/?channel={{user.raider.twitch_name}}" frameborder = "0" allowfullscreen = "true" scrolling = "no" height = "400" width = "620" ></iframe>
+    <iframe src = "https://www.twitch.tv/embed/{{user.raider.twitch_name}}/chat" frameborder = "0" scrolling = "no" height = "400" width = "350" ></iframe>
+    </div><br><div class="divider col s12"></div><div class="col s12" style="height: 10px"></div>
+    {% endfor %}
+</div>
+{% elif pages.number == 2%}
+<div class="row center">
+    <h1>Jarls</h1>
+    {% for user in groups %}
+    <iframe src = "https://player.twitch.tv/?channel={{user.raider.twitch_name}}" frameborder = "0" allowfullscreen = "true" scrolling = "no" height = "378" width = "620" ></iframe>
+    {% empty %}
+    <p> hmm there no jarl online</p>
+    {% endfor %}
+</div>
+{% elif pages.number == 3 %}
+<div class="row center">
+    <h1>Gothi</h1>
+    {% for user in groups %}
+    <iframe src = "https://player.twitch.tv/?channel={{user.raider.twitch_name}}" frameborder = "0" allowfullscreen = "true" scrolling = "no" height = "378" width = "620" ></iframe>
+    {% empty %}
+    <p> hmm there no gothi online</p>
+    {% endfor %}
+</div>
+{% elif pages.number == 4 %}
+<div class="row center">
+    <h4>The Fimm-Ti</h4>
+    {% for user in groups|slice:"0:9" %}
+    <iframe src = "https://player.twitch.tv/?channel={{user.raider.twitch_name}}" frameborder = "0" allowfullscreen = "true" scrolling = "no" height = "325" width = "590" ></iframe>
+    {% empty %}
+    <p> hmm there no one at this rank.. or online</p>
+    <P> attend more raid lets get here</P>
+    {% endfor %}
+</div>
+{% elif pages.number == 5 %}
+<div class="row center">
+    <h4>Berserker</h4>
+    {% for user in groups|slice:"0:9" %}
+    <iframe src = "https://player.twitch.tv/?channel={{user.raider.twitch_name}}" frameborder = "0" allowfullscreen = "true" scrolling = "no" height = "325" width = "590" ></iframe>
+    {% empty %}
+    <p> hmm there no one at this rank.. or online</p>
+    <P> attend more raid lets get here</P>
+    {% endfor %}
+</div>
+{% elif pages.number == 6 %}
+<div class="row center">
+    <h4>Huskarl</h4>
+    {% for user in groups|slice:"0:9" %}
+    <iframe src = "https://player.twitch.tv/?channel={{user.raider.twitch_name}}" frameborder = "0" allowfullscreen = "true" scrolling = "no" height = "325" width = "590" ></iframe>
+    {% empty %}
+    <p> hmm there no one at this rank.. or online</p>
+    <P> attend more raid lets get here</P>
+    {% endfor %}
+</div>
+{% elif pages.number == 7 %}
+<div class="row center">
+    <h4>Theg</h4>
+    {% for user in groups|slice:"0:9" %}
+    <iframe src = "https://player.twitch.tv/?channel={{user.raider.twitch_name}}" frameborder = "0" allowfullscreen = "true" scrolling = "no" height = "325" width = "590" ></iframe>
+    {% empty %}
+    <p> hmm there no one at this rank.. or online</p>
+    <P> attend more raid lets get here</P>
+    {% endfor %}
+</div>
+{% elif pages.number == 8 %}
+<div class="row center">
+    <h4>Gesith</h4>
+    {% for user in groups|slice:"0:9" %}
+    <iframe src = "https://player.twitch.tv/?channel={{user.raider.twitch_name}}" frameborder = "0" allowfullscreen = "true" scrolling = "no" height = "325" width = "590" ></iframe>
+    {% empty %}
+    <p> hmm there no one at this rank.. or online</p>
+    <P> attend more raid lets get here</P>
+    {% endfor %}
+</div>
+{% elif pages.number == 9 %}
+<div class="row center">
+    <h4>Bondi</h4>
+    {% for user in groups|slice:"0:9" %}
+    <iframe src = "https://player.twitch.tv/?channel={{user.raider.twitch_name}}" frameborder = "0" allowfullscreen = "true" scrolling = "no" height = "325" width = "590" ></iframe>
+    {% empty %}
+    <p> hmm there no one at this rank.. or online</p>
+    <P> attend more raid lets get here</P>
+    {% endfor %}
+</div>
+{% elif pages.number == 10 %}
+<div class="row center">
+    <h4>Dreng</h4>
+    {% for user in groups|slice:"0:9" %}
+    <iframe src = "https://player.twitch.tv/?channel={{user.raider.twitch_name}}" frameborder = "0" allowfullscreen = "true" scrolling = "no" height = "325" width = "590" ></iframe>
+    {% empty %}
+    <p> hmm there no one at this rank.. or online</p>
+    <P> attend more raid lets get here</P>
+    {% endfor %}
+</div>
+{% elif pages.number == 11|slice:"0:9" %}
+<div class="row center">
+    <h4>Karl</h4>
+    {% for user in groups|slice:"0:9" %}
+    <iframe src = "https://player.twitch.tv/?channel={{user.raider.twitch_name}}" frameborder = "0" allowfullscreen = "true" scrolling = "no" height = "325" width = "590" ></iframe>
+    {% empty %}
+    <p> hmm there no one at this rank.. or online</p>
+    <P> attend more raid lets get here</P>
+    {% endfor %}
+</div>
+{% elif pages.number == 12 %}
+<div class="row center">
+    <h5>Folc</h5>
+    {% for user in groups|slice:"0:9" %}
+    <iframe src = "https://player.twitch.tv/?channel={{user.raider.twitch_name}}" frameborder = "0" allowfullscreen = "true" scrolling = "no" height = "300" width = "550" ></iframe>
+    {% empty %}
+    <p> hmm there no one at this rank.. or online</p>
+    <P> attend more raid lets get here</P>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

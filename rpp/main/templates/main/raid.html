@@ -1,0 +1,85 @@
+{% extends "main/header.html" %}
+{% load static %}
+
+{% block title %}
+<title>Homepage</title>
+{% endblock %}
+
+{% block content %}
+<div style="height: 10px;"></div>
+<div class=" row center container">
+<!-- Modal Trigger -->
+  <div class="col l5 m12 s12 center">
+        {% if request.user_agent.is_mobile %}
+        <button data-target="modal1" class="btn modal-trigger z-depth-4" style="height: 160px; width: 200px; font-size: 80px; background: #b72026; border-radius: 12px;"><span>flash</span></button>
+        {% elif request.user_agent.is_tablet %}
+        <button data-target="modal1" class="btn modal-trigger z-depth-4" style="height: 160px; width: 200px; font-size: 80px; background: #b72026; border-radius: 12px;"><span>flash</span></button>
+        {% else %}
+        <button data-target="modal1" class="btn modal-trigger z-depth-4 button-2 hide-on-med-and-up" style="height: 320px; width: 275px; font-size: 80px; background: #b72026; border-radius: 12px;"><span>flash</span></button>
+        <button data-target="modal1" class="btn modal-trigger z-depth-4 button-2 hide-on-small-only" style="height: 320px; width: 400px; font-size: 80px; background: #b72026; border-radius: 12px;"><span>flash</span></button>
+        {% endif %}
+
+    </div>
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal" style="background: #0e3b43;">
+    <div class="modal-content">
+      <h4 class="white-text">flash</h4>
+    </div>
+    <div class="modal-footer center" style="background: #0e3b43;">
+      <a href="#" class="modal-close waves-effect waves-green btn-flat white-text center">!flash</a>
+    </div>
+  </div>
+
+
+{% if request.user_agent.is_mobile %}
+<div class="col m2 s12 center"></div>
+{% elif request.user_agent.is_tablet %}
+<div class="col m2 s12 center" style="height: 40px"></div>
+{% else %}
+<div class="col l2 m12 s12" style="height: 40px"></div>
+{% endif %}
+
+<!-- Modal Trigger -->
+    <div class="col l5 m12 s12 center">
+        {% if request.user_agent.is_mobile %}
+        <button data-target="modal2" class="btn modal-trigger z-depth-4" style="height: 160px; width: 200px; font-size: 80px; background: #b72026; border-radius: 12px;"><span id="a">here</span></button>
+        {% elif request.user_agent.is_tablet %}
+        <button data-target="modal2" class="btn modal-trigger z-depth-4" style="height: 160px; width: 200px; font-size: 80px; background: #b72026; border-radius: 12px;"><span id="a">here</span></button>
+        {% else %}
+        <button data-target="modal2" class="btn modal-trigger z-depth-4 button-2 hide-on-med-and-up" id="us" style="height: 320px; width: 275px; font-size: 80px; background: #b72026; border-radius: 12px;"><span id="a">here</span></button>
+        <button data-target="modal2" class="btn modal-trigger z-depth-4 button-2 hide-on-small-only" id="us" style="height: 320px; width: 400px; font-size: 80px; background: #b72026; border-radius: 12px;"><span id="a">here</span></button>
+        {% endif %}
+    </div>
+  <!-- Modal Structure -->
+  <div id="modal2" class="modal" style="background: #0c1217;">
+    <div class="modal-content">
+      <h4 class="white-text">raid</h4>
+    </div>
+    <div class="modal-footer center" style="background: #0e3b43;">
+      <a href="#" class="modal-close waves-effect waves-green btn-flat white-text center">!here</a>
+    </div>
+  </div>
+  <style>
+    @media screen and (max-width: 768px) {
+
+              .button-2 {
+                width: 200px;
+                }
+     }
+  </style>
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.modal');
+      var instances = M.Modal.init(elems, options);
+    });
+
+    // Or with jQuery
+
+    $(document).ready(function(){
+      $('.modal').modal();
+    });
+  </script>
+    <iframe src="https://player.twitch.tv/?channel=raidingpartyplusofficial" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe><a href="https://www.twitch.tv/raidingpartyplusofficial?tt_content=text_link&tt_medium=live_embed" style="padding:2px 0px 4px; display:block; width:345px; font-weight:normal; font-size:10px; text-decoration:underline;">Watch live video from raidingpartyplusofficial on www.twitch.tv</a>
+    <iframe src="https://www.twitch.tv/embed/raidingpartyplusofficial/chat" frameborder="0" scrolling="no" height="500" width="350"></iframe>
+  </div>
+{% endblock %}
